@@ -37,7 +37,18 @@ brfss_clean = brfss_smart2010 %>%
   mutate(response = forcats::fct_relevel(response, c("Excellent", "Very good", "Good", "Fair", "Poor"))) 
 ```
 
+Next we are interested in the following questions:
 
+### In 2002, which states were observed at 7 locations?
+
+```{r}
+brfss_clean %>% 
+  group_by(locationabbr) %>% 
+  summarize(n_obs = n_distinct(locationdesc)) %>% 
+  filter(n_obs == 7)
+```
+
+States that were observed at 7 locations were CT (Connecticut), MT (Montana), NH (New Hampshire), NM (New Mexico), OR (Oregon), TN (Tennessee), and UT (Utah).
 
 
 
