@@ -29,6 +29,14 @@ data(brfss_smart2010)
 Then we need to do the following cleaning steps: 1) format the data to use appropriate variable names 2) focus on the “Overall Health” topic
 3) include only responses from “Excellent” to “Poor” 4) organize responses as a factor taking levels ordered from “Excellent” to “Poor”.
 
+```{r}
+brfss_clean = brfss_smart2010 %>% 
+  janitor::clean_names() %>% 
+  filter(topic == "Overall Health",
+         response == "Poor" | response == "Fair" | response == "Good" | response == "Very good" | response == "Excellent") %>% 
+  mutate(response = forcats::fct_relevel(response, c("Excellent", "Very good", "Good", "Fair", "Poor"))) 
+```
+
 
 
 
