@@ -111,7 +111,7 @@ This plot shows that the average proportion of a given response across time is l
 
 ## Problem 2
 
-This problem uses the Instacart data; we can once again load this p8105.datasets package:
+This problem uses the Instacart data; we can once again load this dataset with the p8105.datasets package:
 
 ```{r}
 data(instacart)
@@ -180,5 +180,17 @@ instacart %>%
   knitr::kable()
 ```
 
-With the exception of Day 0 (Sunday) and Day 5 (Friday) when Pink Lady Apples and Coffee Ice Cream are bought around the same time of day, Pink Lady Apples are generally bought earlier in the day than Coffee Ice Cream.
+With the exception of Day 0 (Sunday) and Day 5 (Friday) when Pink Lady Apples and Coffee Ice Cream are bought around the same time of day, Pink Lady Apples are generally bought earlier in the day than Coffee Ice Cream is.
+
+### Problem 3
+
+This problem uses the NY NOAA data; we can once again load this dataset with the p8105.datasets package:
+
+```{r}
+data(ny_noaa)
+```
+
+This datast consists of `r nrow(ny_noaa)` observations and `r ncol(ny_noaa)` variables collected from NY weather stations over the time period of January 1, 1981 to December 31, 2010. Key variables include *id* which is a weather station identifier, *date* which tells us the date of the observation, *prcp* which tells us the amount of precipitation in mm, and *tmax*/*tmin* which tell us the maximim/minimum temperatures in tenths of degrees Celsius. Each weather station may collect only a subset of these variables, and therefore the resulting dataset contains extensive missing data.
+
+
 
