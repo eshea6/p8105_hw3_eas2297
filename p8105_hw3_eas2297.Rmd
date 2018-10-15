@@ -117,9 +117,20 @@ This problem uses the Instacart data; we can once again load this p8105.datasets
 data(instacart)
 ```
 
+This datast consists of `r nrow(instacart)` observations and `r ncol(instacart)` variables. Key variables include *order_id* which is an order indentifier, *order_hour_of_day* which tells us the hour of the day that the order was placed, *product_name* which tells us the name of the product, *aisle* which tells us the aisle category of the given product, and *department* which tells us the department category of the given product. In this dataset, an observation is a distinct product from a unique order, which is found in an individual row. For example, Row 1 tells us that in Order 1 Bulgarian Yogurt was bought from the yogurt aisle, while Row 6 tells us that in Order 1 a Bag of Organic Bananas was bought from the produce department. 
 
+Now we are interested in the following:
 
+### How many aisles are there, and which aisles are the most items ordered from?
 
+```{r}
+instacart %>% 
+  count(aisle) %>% 
+  arrange(desc(n)) %>% 
+  filter(n > 70000) %>% 
+  knitr::kable()
+```
 
+There are **134** aisles. The aisles with the most items ordered are the fresh vegetables aisle and the fresh fruits aisle; the packaged vegetables and fruits aisle is the next most popular aisle, but this aisle is not nearly as popular as the fresh produce aisles. 
 
 
