@@ -11,7 +11,7 @@ library(ggridges)
 
 knitr::opts_chunk$set(
   fig.width = 6,
-  fig.asp = .6,
+  fig.asp = .7,
   out.width = "90%"
 )
 
@@ -101,7 +101,7 @@ brfss_clean %>%
     x = "Year (2000s)",
     y = "Average proportion of response",
     caption = "Data from the BRFSS",
-    color = "State"
+    color = ""
   ) +
   theme(legend.position = "right")
 ```
@@ -110,6 +110,15 @@ This plot shows that the average proportion of a given response across time is l
 
 
 ## Problem 2
+
+This problem uses the Instacart data; we can once again load this p8105.datasets package:
+
+```{r}
+data(instacart)
+```
+
+
+
 
 
 
