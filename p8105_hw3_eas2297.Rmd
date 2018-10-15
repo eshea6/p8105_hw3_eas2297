@@ -257,4 +257,5 @@ snowfall_p = ny_noaa_clean %>%
 (tmax_tmin_p + snowfall_p)
 ```
 
+The hex plot shows that tmax and tmin look generally correlated to each other, with counts clustering in the moderate temperature range. The density plot shows that snowfall over the years generally occurs in predictable amounts, with most snowfalls at 40 mm of snow or below, and then a scattering of higher snow amounts each year. 
 
