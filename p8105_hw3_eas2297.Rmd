@@ -153,4 +153,22 @@ instacart %>%
   theme(legend.position = "none", axis.text.x = element_text(angle = 90, hjust = 1, size = 6))
 ```
 
+Most of the 134 aisles in the Instacart dataset have fewer than 50000 items ordered from them, with the exception of the aisles in th table above. This fact makes the plot of number of items ordered in each aisle arranged in ascending order very left skewed. 
 
+### Make a table showing the most popular item in each of the aisles “baking ingredients”, “dog food care”, and “packaged vegetables fruits”.
+
+```{r}
+instacart %>% 
+  filter(aisle == "baking ingredients" | aisle == "dog food care" | aisle == "packaged vegetables fruits") %>% 
+  group_by(aisle, product_name) %>% 
+  summarize(n = n()) %>% 
+  group_by(aisle) %>% 
+  filter(n == max(n)) %>% 
+  knitr::kable()
+```
+
+The most popular item in the "baking ingredients" aisle is Light Brown Sugar at 499 purchases; the most popular item in the "dog food care" aisle is Snack Sticks Chicken & Rice Recipe Dog Treats at 30 purchases; the most popular item in the "packaged vegetables fruits" aisle is Organic Baby Spinach at 9784 purchases. We would expect the "packaged vegetables fruits" to have the most popular item out of all of these aisles' most popular items since the previous bar graph and table show that "packaged vegetables fruits" is one of the most bought from aisles. 
+
+### 
+
+  
