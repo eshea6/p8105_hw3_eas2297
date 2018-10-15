@@ -133,4 +133,24 @@ instacart %>%
 
 There are **134** aisles. The aisles with the most items ordered are the fresh vegetables aisle and the fresh fruits aisle; the packaged vegetables and fruits aisle is the next most popular aisle, but this aisle is not nearly as popular as the fresh produce aisles. 
 
+### Make a plot that shows the number of items ordered in each aisle. Order aisles sensibly, and organize your plot so others can read it.
+
+```{r}
+instacart %>% 
+  group_by(aisle) %>% 
+  summarize(count = n()) %>% 
+  ggplot(aes(x = reorder(aisle, count), y = count, fill = aisle)) +
+  geom_bar(stat = "identity") +
+  labs(
+    title = "Instacart plot",
+    x = "Aisle",
+    y = "Number of items ordered",
+    caption = "Data from Instacart"
+  ) +
+  viridis::scale_fill_viridis(
+    discrete = TRUE
+  ) +
+  theme(legend.position = "none", axis.text.x = element_text(angle = 90, hjust = 1, size = 6))
+```
+
 
