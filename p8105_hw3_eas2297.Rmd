@@ -37,18 +37,38 @@ brfss_clean = brfss_smart2010 %>%
   mutate(response = forcats::fct_relevel(response, c("Excellent", "Very good", "Good", "Fair", "Poor"))) 
 ```
 
-Next we are interested in the following questions:
+Next we are interested in the following:
 
 ### In 2002, which states were observed at 7 locations?
 
 ```{r}
 brfss_clean %>% 
+  filter(year == 2002) %>% 
   group_by(locationabbr) %>% 
-  summarize(n_obs = n_distinct(locationdesc)) %>% 
+  summarize(n_obs = n_distinct(locationdesc)) %>%
   filter(n_obs == 7)
 ```
 
-States that were observed at 7 locations were CT (Connecticut), MT (Montana), NH (New Hampshire), NM (New Mexico), OR (Oregon), TN (Tennessee), and UT (Utah).
+States that were observed at 7 locations in 2002 were CT (Connecticut), FL (Florida), and NC (North Carolina).
+
+### Make a “spaghetti plot” that shows the number of locations in each state from 2002 to 2010.
+
+```{r}
+brfss_clean %>% 
+  group_by(locationabbr, year) %>% 
+  summarize(n_obs = n_distinct(locationdesc)) %>% 
+  ggplot(aes(x = year, y = n_obs, color = locationabbr)) +
+  geom_line() +
+  labs(
+    title = "Spaghetti plot -- Locations over time",
+    x = "Year",
+    y = "Number of Locations Observed",
+    caption = "Data from the BRFSS",
+    color = "State"
+  )
+```
+
+
 
 
 
