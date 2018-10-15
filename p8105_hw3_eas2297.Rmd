@@ -67,7 +67,7 @@ brfss_clean %>%
     caption = "Data from the BRFSS",
     color = "State"
   ) + 
-  theme(legend.text=element_text(size = 8))
+  theme(legend.position = "right", legend.text = element_text(size = 8), legend.key.size = unit(0.5,"line"))
 ```
 
 The "spaghetti plot" shows that most states in most years have fewer than 10 locations observed. However, there are some notable exceptions - particularly Florida in the year 2007 which had 44 locations observed; Florida also had another large spike in locations observed in 2010. 
@@ -103,7 +103,7 @@ brfss_clean %>%
     caption = "Data from the BRFSS",
     color = "State"
   ) +
-  theme(legend.text=element_text(size = 8))
+   theme(legend.position = "right", legend.text = element_text(size = 8), legend.key.size = unit(0.5,"line"))
 ```
 
 This plot shows that the average proportion of a given response across time is loosely similar across states. This conclusion is reached because we see that the lines for each state over time are generally clustered together in a single response panel. For example, all states had an average proportion of "Poor" responses of less than 10% during any given year. Additionally, all states had an average proportion of "Very good" responses somewhere between 25% and 45% at any given time.
