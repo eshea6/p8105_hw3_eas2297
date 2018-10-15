@@ -94,9 +94,11 @@ brfss_clean %>%
   ggplot(aes(x = year, y = average_prop, color = locationabbr)) +
   geom_line(alpha = 0.5) +
   facet_grid(~response) + 
+  scale_x_continuous(breaks = c(2002, 2006, 2010),
+                     labels = c("'02", "'06", "'10")) +
   labs(
     title = "Response panels: state-level averages over time",
-    x = "Year",
+    x = "Year (2000s)",
     y = "Average proportion of response",
     caption = "Data from the BRFSS",
     color = "State"
@@ -105,6 +107,9 @@ brfss_clean %>%
 ```
 
 This plot shows that the average proportion of a given response across time is loosely similar across states. This conclusion is reached because we see that the lines for each state over time are generally clustered together in a single response panel. For example, all states had an average proportion of "Poor" responses of less than 10% during any given year. Additionally, all states had an average proportion of "Very good" responses somewhere between 25% and 45% at any given time.
+
+
+## Problem 2
 
 
 
