@@ -190,7 +190,29 @@ This problem uses the NY NOAA data; we can once again load this dataset with the
 data(ny_noaa)
 ```
 
-This datast consists of `r nrow(ny_noaa)` observations and `r ncol(ny_noaa)` variables collected from NY weather stations over the time period of January 1, 1981 to December 31, 2010. Key variables include *id* which is a weather station identifier, *date* which tells us the date of the observation, *prcp* which tells us the amount of precipitation in mm, and *tmax*/*tmin* which tell us the maximim/minimum temperatures in tenths of degrees Celsius. Each weather station may collect only a subset of these variables, and therefore the resulting dataset contains extensive missing data.
+This datast consists of `r nrow(ny_noaa)` observations and `r ncol(ny_noaa)` variables collected from NY weather stations over the time period of January 1, 1981 to December 31, 2010. Key variables include *id* which is a weather station identifier, *date* which tells us the date of the observation, *prcp* which tells us the amount of precipitation in tenths of mm, and *tmax*/*tmin* which tell us the maximim/minimum temperatures in tenths of degrees Celsius. Each weather station may collect only a subset of these variables, and therefore the resulting dataset contains extensive missing data.
 
+Now we are interested in the following:
 
+### Do some data cleaning. Create separate variables for year, month, and day. Ensure observations for temperature, precipitation, and snowfall are given in reasonable units. For snowfall, what are the most commonly observed values? Why?
+
+```{r}
+ny_noaa_clean = ny_noaa %>% 
+  separate(date, into = c("year", "month", "day"), sep = "-") %>% 
+  filter(snow >= 0) %>% 
+  mutate(
+    tmax = as.numeric(tmax) / 10,
+    tmin = as.numeric(tmin) / 10,
+    prcp = prcp / 10
+  )
+
+ny_noaa_clean %>% 
+  group_by(snow) %>% 
+  summarize(n = n()) %>% 
+  arrange(desc(n))
+```
+
+This cleaning step created separate variable for year, month, and day. It also converted unreasonable units (i.e. tenths of mm, tenths of degrees C) to more reasonable units (i.e. mm, degrees C) and filtered out an unreasonable negative observation for snowfall. The most commonly observed values for snowfall are zero because most days of the year it does not snow. 
+
+### 
 
