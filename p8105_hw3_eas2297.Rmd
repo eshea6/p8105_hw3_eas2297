@@ -243,7 +243,7 @@ There is not much of an observable structure to this plot, other than the fact t
 tmax_tmin_p = ny_noaa_clean %>% 
   ggplot(aes(x = tmax, y = tmin)) +
   geom_hex() +
-  theme(legend.key.width = unit(2,"cm"))
+  theme(legend.key.width = unit(1.25,"cm"))
 
 snowfall_p = ny_noaa_clean %>% 
   filter(snow > 0 & snow < 100) %>% 
