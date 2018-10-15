@@ -65,7 +65,8 @@ brfss_clean %>%
     y = "Number of Locations Observed",
     caption = "Data from the BRFSS",
     color = "State"
-  )
+  ) + 
+  theme(legend.position = "right")
 ```
 
 
